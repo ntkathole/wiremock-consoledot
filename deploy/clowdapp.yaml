@@ -18,6 +18,8 @@ parameters:
     value: 150m
   - name: CPU_LIMIT
     value: 300m
+  - name: SUBSCRIPTION_SEARCH_URL
+    value: placeholder
 objects:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdApp
@@ -66,3 +68,28 @@ objects:
               periodSeconds: 20
               successThreshold: 1
               timeoutSeconds: 5
+            volumeMounts:
+            - name: swatch-proxy-mappings
+              mountPath: /home/wiremock
+            volumes:
+            - name: swatch-proxy-mappings
+              configMap:
+                name: proxy-mappings
+
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: proxy-mappings
+    data:
+      proxies.json: |-
+      {
+        "priority": 10,
+        "request": {
+          "method": "ANY",
+          "urlPattern": "/search/criteria;*"
+        },
+        "response": {
+          "proxyBaseUrl": ${SUBSCRIPTION_SEARCH_URL}
+        }
+      }
+
