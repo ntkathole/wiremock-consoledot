@@ -99,7 +99,7 @@ objects:
           "priority": 10,
           "request": {
             "method": "ANY",
-            "urlPattern": "/partnerApi/v1/partnerSubscriptions"
+            "urlPattern": "/v1/partnerSubscriptions"
           },
           "response": {
             "proxyBaseUrl": "${PARTNER_ENTITLEMENT_URL}"
