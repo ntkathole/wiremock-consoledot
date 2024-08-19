@@ -82,14 +82,14 @@ objects:
       name: proxy-mappings
     data:
       proxies.json: |-
-      {
-        "priority": 10,
-        "request": {
-          "method": "ANY",
-          "urlPattern": "/search/criteria;*"
-        },
-        "response": {
-          "proxyBaseUrl": ${SUBSCRIPTION_SEARCH_URL}
+        {
+          "priority": 10,
+          "request": {
+            "method": "ANY",
+            "urlPattern": "/search/criteria;*"
+          },
+          "response": {
+            "proxyBaseUrl": ${SUBSCRIPTION_SEARCH_URL}
+          }
         }
-      }
 
