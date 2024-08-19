@@ -70,7 +70,7 @@ objects:
               timeoutSeconds: 5
             volumeMounts:
             - name: swatch-proxy-mappings
-              mountPath: /home/wiremock
+              mountPath: /home/wiremock/mappings
             volumes:
             - name: swatch-proxy-mappings
               configMap:
@@ -89,7 +89,7 @@ objects:
             "urlPattern": "/search/criteria;*"
           },
           "response": {
-            "proxyBaseUrl": ${SUBSCRIPTION_SEARCH_URL}
+            "proxyBaseUrl": "${SUBSCRIPTION_SEARCH_URL}"
           }
         }
 
