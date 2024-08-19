@@ -20,6 +20,8 @@ parameters:
     value: 300m
   - name: SUBSCRIPTION_SEARCH_URL
     value: placeholder
+  - name: PARTNER_ENTITLEMENT_URL
+    value: placeholder
 objects:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdApp
@@ -81,7 +83,7 @@ objects:
     metadata:
       name: proxy-mappings
     data:
-      proxies.json: |-
+      subscription-search-api-proxy.json: |-
         {
           "priority": 10,
           "request": {
@@ -92,4 +94,16 @@ objects:
             "proxyBaseUrl": "${SUBSCRIPTION_SEARCH_URL}"
           }
         }
+      partner-entitlement-api-proxy.json: |-
+        {
+          "priority": 10,
+          "request": {
+            "method": "ANY",
+            "urlPattern": "/partnerApi/v1/partnerSubscriptions"
+          },
+          "response": {
+            "proxyBaseUrl": "${PARTNER_ENTITLEMENT_URL}"
+          }
+        }
+
 
