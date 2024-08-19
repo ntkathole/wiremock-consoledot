@@ -86,7 +86,7 @@ objects:
           "priority": 10,
           "request": {
             "method": "ANY",
-            "urlPattern": "/search/criteria;*"
+            "urlPattern": "/search/criteria;.*"
           },
           "response": {
             "proxyBaseUrl": "${SUBSCRIPTION_SEARCH_URL}"
