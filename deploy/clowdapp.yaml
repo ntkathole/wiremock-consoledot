@@ -48,8 +48,18 @@ objects:
                 cpu: ${CPU_LIMIT}
                 memory: ${MEMORY_LIMIT}
             env:
+              - name: TRUSTSTORE_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: tls
+                    key: truststore_password
+              - name: KEYSTORE_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: tls
+                    key: keystore_password
               - name: WIREMOCK_OPTIONS
-                value: --port=8000
+                value: --port=8000 --https-truststore=/pinhead/truststore.jks --truststore-type=JKS --truststore-password=$(TRUSTSTORE_PASSWORD) --https-keystore=/pinhead/keystore.jks --keystore-type=JKS --keystore-password=$(KEYSTORE_PASSWORD)
             livenessProbe:
               failureThreshold: 3
               httpGet:
@@ -73,10 +83,16 @@ objects:
             volumeMounts:
             - name: swatch-proxy-mappings
               mountPath: /home/wiremock/mappings
+            - name: pinhead
+              mountPath: /pinhead
             volumes:
             - name: swatch-proxy-mappings
               configMap:
                 name: proxy-mappings
+                emptyDir:
+            - name: pinhead
+              secret:
+                secretName: pinhead
 
   - apiVersion: v1
     kind: ConfigMap
