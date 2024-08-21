@@ -54,7 +54,8 @@ objects:
                     name: tls
                     key: keystore_password
               - name: WIREMOCK_OPTIONS
-                value: --port=8000 --https-truststore=/pinhead/truststore.jks --truststore-type=JKS --truststore-password=$(KEYSTORE_PASSWORD) --https-keystore=/pinhead/keystore.jks --keystore-type=JKS --keystore-password=$(KEYSTORE_PASSWORD)
+                # Wiremock uses the truststore instead of keystore to read client certs: https://wiremock.org/docs/proxying/#proxying-to-a-target-server-that-requires-client-certificate-authentication
+                value: --port=8000 --https-truststore=/pinhead/keystore.jks --truststore-type=JKS --truststore-password=$(KEYSTORE_PASSWORD)
             livenessProbe:
               failureThreshold: 3
               httpGet:
