@@ -100,10 +100,11 @@ objects:
           "priority": 10,
           "request": {
             "method": "ANY",
-            "urlPattern": "/search/criteria;.*"
+            "urlPattern": "/mock/subscriptionApi/search/criteria;.*"
           },
           "response": {
-            "proxyBaseUrl": "${SUBSCRIPTION_SEARCH_URL}"
+            "proxyBaseUrl": "${SUBSCRIPTION_SEARCH_URL}",
+            "proxyUrlPrefixToRemove": "/mock/subscriptionApi"
           }
         }
       partner-entitlement-api-proxy.json: |-
@@ -111,10 +112,11 @@ objects:
           "priority": 10,
           "request": {
             "method": "ANY",
-            "urlPattern": "/v1/partnerSubscriptions"
+            "urlPattern": "/mock/partnerApi/v1/partnerSubscriptions"
           },
           "response": {
-            "proxyBaseUrl": "${PARTNER_ENTITLEMENT_URL}"
+            "proxyBaseUrl": "${PARTNER_ENTITLEMENT_URL}",
+            "proxyUrlPrefixToRemove": "/mock/partnerApi"
           }
         }
 
