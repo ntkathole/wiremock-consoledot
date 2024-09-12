@@ -119,5 +119,16 @@ objects:
             "proxyUrlPrefixToRemove": "/mock/partnerApi"
           }
         }
-
+      contract_service_response.json: |-
+        {
+          "priority": 10,
+          "request": {
+            "method": "ANY",
+            "urlPattern": "/mock/contractApi/api/swatch-contracts/internal/contracts"
+          },
+          "response": {
+            "proxyBaseUrl": "${SWATCH_CONTRACT_SERVICE_URL}",
+            "proxyUrlPrefixToRemove": "/mock/contractApi"
+          }
+        }
 
