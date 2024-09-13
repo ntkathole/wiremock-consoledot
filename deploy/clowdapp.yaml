@@ -22,6 +22,8 @@ parameters:
     value: placeholder
   - name: PARTNER_ENTITLEMENT_URL
     value: placeholder
+  - name: SWATCH_CONTRACT_SERVICE_URL
+    value: placeholder
 objects:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdApp
