@@ -9,7 +9,7 @@ parameters:
   - name: WIREMOCK_IMAGE
     value: quay.io/cloudservices/wiremock
   - name: WIREMOCK_IMAGE_TAG
-    value: 3.9.1
+    value: 3x-alpine
   - name: MEMORY_REQUEST
     value: 256Mi
   - name: MEMORY_LIMIT
