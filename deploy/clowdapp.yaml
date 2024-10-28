@@ -24,6 +24,8 @@ parameters:
     value: placeholder
   - name: SWATCH_CONTRACT_SERVICE_URL
     value: placeholder
+  - name: RHSM_CONSUMERS_URL
+    value: placeholder
 objects:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdApp
@@ -131,6 +133,18 @@ objects:
           "response": {
             "proxyBaseUrl": "${SWATCH_CONTRACT_SERVICE_URL}",
             "proxyUrlPrefixToRemove": "/mock/contractApi"
+          }
+        }
+      conduit_service_response.json: |-
+        {
+          "priority": 10,
+          "request": {
+            "method": "ANY",
+            "urlPattern": "/mock/rhsmApi/candlepin/consumers/feeds.*"
+          },
+          "response": {
+            "proxyBaseUrl": "${RHSM_CONSUMERS_URL}",
+            "proxyUrlPrefixToRemove": "/mock/rhsmApi"
           }
         }
 
